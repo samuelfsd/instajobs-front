@@ -2,8 +2,8 @@ import { extendTheme } from '@chakra-ui/react';
 
 export const instaJobsTheme = extendTheme({
   colors: {
-    primary: '#5887FF',
-    secundary: '#102E4A',
+    primary: '#6F38C5',
+    secundary: '#B1B2FF',
     info: '#715AFF',
     warning: '#FFD275',
     danger: '#FB4B4E',
