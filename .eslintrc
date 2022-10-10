@@ -1,44 +1,90 @@
 {
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "jest": true
+  },
   "extends": [
-    "eslint:recommended",
     "plugin:react/recommended",
-    "plugin:jsx-a11y/recommended",
+    "airbnb",
     "plugin:@typescript-eslint/recommended",
-    "plugin:import/typescript",
-    "plugin:react/jsx-runtime",
-    "plugin:prettier/recommended",
-    "prettier"
+    "prettier",
+    "plugin:prettier/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
     },
-    "ecmaVersion": "latest",
+    "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint", "import", "jsx-a11y", "react-hooks", "prettier"],
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "eslint-plugin-import-helpers",
+    "prettier"
+  ],
   "rules": {
-    "@typescript-eslint/no-explicit-any": "off",
-    "@typescript-eslint/no-non-null-assertion": "off",
-    "@typescript-eslint/no-unused-vars": [
-      "warn",
+    "camelcase": "off",
+    "import/no-unresolved": "error",
+    "@typescript-eslint/naming-convention": [
+      "error",
       {
-        "argsIgnorePattern": "^_",
-        "varsIgnorePattern": "^_",
-        "caughtErrorsIgnorePattern": "^_"
+        "selector": "interface",
+        "format": ["PascalCase"],
+        "custom": {
+          "regex": "^I[A-Z]",
+          "match": true
+        }
       }
     ],
-
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
-
-    "prettier/prettier": [
+    "class-methods-use-this": "off",
+    "import/prefer-default-export": "off",
+    "no-shadow": "off",
+    "no-console": "off",
+    "no-useless-constructor": "off",
+    "no-empty-function": "off",
+    "lines-between-class-members": "off",
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "import-helpers/order-imports": [
       "warn",
       {
-        "endOfLine": "auto",
-        "singleQuote": true
+        "newlinesBetween": "always",
+        "groups": ["module", "/^@shared/", ["parent", "sibling", "index"]],
+        "alphabetize": {
+          "order": "asc",
+          "ignoreCase": true
+        }
       }
-    ]
+    ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": ["**/*.spec.js"]
+      }
+    ],
+    "prettier/prettier": "error",
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [".jsx", ".tsx"]
+      }
+    ],
+    "react/react-in-jsx-scope": "off",
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": ["error"]
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
+    }
   }
 }
