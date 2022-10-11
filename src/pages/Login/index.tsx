@@ -1,61 +1,68 @@
-import { Box, Button, Flex, Input, useTheme, Spacer, Center, FormControl,
-  FormLabel,FormHelperText} from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
-import './styles.scss'
-import { IoReturnUpBack } from 'react-icons/io5'
-import { AiOutlineGoogle } from 'react-icons/ai'
+import {
+  Flex,
+  Heading,
+  Input,
+  Button,
+  Stack,
+  Box,
+  FormControl,
+  useColorModeValue,
+  Text,
+  FormLabel,
+  Image,
+} from '@chakra-ui/react';
+import { ToggleColorMode } from '~/components/ToggleColorMode';
 
-export default function LoginPage() {
-  const theme = useTheme()
+import logo from '../../assets/logo.svg';
+
+export function LoginPage() {
   return (
-    <>
-      <Box bgColor={theme.colors.primary} px={4} py={4}>
-        <Flex alignItems={'center'}>
-          <div >
-            <Link to="/"><IoReturnUpBack size={35} color={'#B1B2FF'}/></Link>
-          </div>
-          <Spacer />
-          <Flex alignItems={'center'}>
-            <div>
-              <Link to="/register">
-                <Button px={2} h={10} borderRadius={'2xl'}  bgColor='#B1B2FF' variant='solid'>
-                  Registrar
-                </Button>
-              </Link>
-            </div>
-          </Flex>
-        </Flex>
-      </Box>
-      <Center>
-        <Box pt={10} boxShadow='dark-lg' w={'510px'} h={'540px'} p='6' rounded='md' bgColor={'#D2DAFF'}>
-          <Center textAlign={'center'} >
-            <h1>Entrar</h1>
-          </Center>
-          <Center>
-            <p>Poste ofertas ou fique por dentro das novidades</p>
-          </Center>
-          <FormControl>
-            <FormLabel>E-mail</FormLabel>
-            <Input type='email' />
-            <FormHelperText>Não esqueça de colocar seu E-mail</FormHelperText>
-            <FormLabel>Senha</FormLabel>
-            <Input type='password' />
-            <FormHelperText>Não esqueça de colocar sua senha</FormHelperText>
-          </FormControl>
-          <Center h='50px' color='white' >
-            <Button px={6} borderRadius={'2xl'}  bgColor='#17E1B1' variant='solid'>
-              Login
-            </Button>
-          </Center>
-          <Center h='50px' color='white' >
-            <Button leftIcon={<AiOutlineGoogle />} px={6} borderRadius={'2xl'}  bgColor='#17E1B1' variant='solid'>
-              Entrar com o Google
-            </Button>
-          </Center>
+    <Flex
+      minH={'100vh'}
+      align={'center'}
+      justify={'center'}
+      bg={useColorModeValue('gray.50', 'gray.800')}
+    >
+      <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
+        <Stack align={'center'}>
+          <Box>
+            <Image boxSize='100px' src={logo} alt='Logo InstaJobs' />
+          </Box>
+          <Heading fontSize={'4xl'}>Entre com sua conta!</Heading>
+          <Text align='center' fontSize={'lg'} color={useColorModeValue('gray.500', 'gray.200')}>
+            Poste ofertas ou fique por dentro das novidades de emprego no mercado!
+          </Text>
+        </Stack>
+        <Box rounded={'lg'} bg={useColorModeValue('white', 'gray.700')} boxShadow={'lg'} p={8}>
+          <Stack align='flex-end' spacing={5}>
+            <Box>
+              <ToggleColorMode />
+            </Box>
+          </Stack>
+          <Stack spacing={4}>
+            <FormControl id='email'>
+              <FormLabel>Email </FormLabel>
+              <Input type='email' />
+            </FormControl>
+            <FormControl id='password'>
+              <FormLabel>Senha </FormLabel>
+              <Input type='password' />
+            </FormControl>
+            <Stack spacing={10}>
+              <Stack direction={{ base: 'column', sm: 'row' }} align={'flex-end'}></Stack>
+              <Button
+                bg={'#17E1B1'}
+                color={'white'}
+                _hover={{
+                  bg: '#118268',
+                }}
+              >
+                Entrar
+              </Button>
+            </Stack>
+          </Stack>
         </Box>
-      </Center>
-      
-      
-    </>
+      </Stack>
+    </Flex>
   );
 }
