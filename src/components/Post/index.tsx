@@ -1,7 +1,6 @@
-import { EditIcon, HamburgerIcon, ViewIcon } from '@chakra-ui/icons';
+import { EditIcon, ViewIcon } from '@chakra-ui/icons';
 import {
 	Avatar,
-	Box,
 	Button,
 	Flex,
 	IconButton,
@@ -86,6 +85,6 @@ export default function Post() {
 					Enviar Candidatura
 				</Button>
 			</Flex>
-		</Flex >
+		</Flex>
 	);
 }

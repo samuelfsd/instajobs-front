@@ -1,7 +1,7 @@
 import { Box, Flex, Spacer, useTheme } from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
-import './styles.scss';
 import { HiOutlineUserCircle } from 'react-icons/hi';
+import { Link } from 'react-router-dom';
+
 export default function HomePage() {
   const theme = useTheme();
   return (
