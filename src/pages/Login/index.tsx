@@ -13,7 +13,7 @@ import {
   Link,
 } from '@chakra-ui/react';
 import { useContext, useState } from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { Navigate } from 'react-router-dom';
 import { ToggleColorMode } from '~/components/ToggleColorMode';
 import { AuthContext } from '~/context/authContext';
@@ -26,23 +26,17 @@ interface IForm {
 
 export function LoginPage() {
   const { register, handleSubmit } = useForm<IForm>();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const { signIn, signed } = useContext(AuthContext);
-  const colorBackground = useColorModeValue('white', 'gray.700');
+
+  const colorBackground = useColorModeValue('gray.100', 'gray.700');
   const colorText = useColorModeValue('gray.500', 'gray.200');
 
-  const handleLogin: SubmitHandler<IForm> = async () => {
-    const data = {
-      email,
-      password,
-    };
-
+  const handleLogin: SubmitHandler<IForm> = async (data: IForm) => {
     await signIn(data);
   };
 
   if (signed) {
-    return <Navigate to='/dashboard' />;
+    return <Navigate to='/home' />;
   }
 
   return (
@@ -67,25 +61,15 @@ export function LoginPage() {
             <Stack spacing={4}>
               <FormControl id='email'>
                 <FormLabel>Email </FormLabel>
-                <Input
-                  type='email'
-                  {...register('email')}
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
+                <Input type='email' {...register('email')} />
               </FormControl>
               <FormControl id='password'>
                 <FormLabel>Senha </FormLabel>
-                <Input
-                  type='password'
-                  {...register('password')}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
+                <Input type='password' {...register('password')} />
               </FormControl>
               <Stack spacing={10}>
                 <Stack direction={{ base: 'column', sm: 'row' }} justify='flex-end'>
-                  <Link href='/register' color={'blue.400'}>
+                  <Link href='/register' color={'blue.400'} textDecoration='none'>
                     Não está cadastrado? Faça seu cadastro!
                   </Link>
                 </Stack>

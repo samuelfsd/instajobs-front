@@ -10,8 +10,8 @@ export function Routes() {
     <AllRoutes>
       <Route path='/' element={<LoginPage />} />
       <Route path='/register' element={<RegisterPage />} />
-      <Route path='/dashboard' element={<PrivateRoutes />}>
-        <Route path='/dashboard' element={<Dashboard />} />
+      <Route element={<PrivateRoutes />}>
+        <Route path='/home' element={<Dashboard />} />
       </Route>
     </AllRoutes>
   );

@@ -37,7 +37,6 @@ export const AuthProvider = ({ children }: IProps) => {
       email,
       password,
     });
-
     if (response.data.error) {
       alert(response.data.error);
     } else {
