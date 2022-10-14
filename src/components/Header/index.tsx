@@ -1,21 +1,26 @@
-import { Box, Flex, Image, useColorModeValue } from '@chakra-ui/react';
+import { Avatar, Box, Flex, Image, Text, useTheme, WrapItem } from '@chakra-ui/react';
 
 import logo from '../../assets/logo.svg';
 import { ToggleColorMode } from '../ToggleColorMode';
 
 export function Header() {
+
+  const theme = useTheme();
+
   return (
     <>
-      <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
-        <Flex h={20} alignItems={'center'} justifyContent={'space-around'}>
-          <Box>
+      <Box bgColor={theme.colors.purple_500} w='100%' >
+        <Flex h='5rem' alignItems={'center'} justifyContent={'space-between'} paddingX='4rem' >
+          <Flex alignItems='center' >
             <Image boxSize='50px' src={logo} alt='Logo InstaJobs' />
-          </Box>
+            <Text fontSize='1.8rem' ml='1rem' fontWeight='700' color='white' >Insta Jobs</Text>
+          </Flex>
 
-          <Flex alignItems={'center'}>
-            <Box>
-              <ToggleColorMode />
-            </Box>
+          <Flex alignItems='center' justifyContent='space-between' w='10rem' >
+            <ToggleColorMode />
+            <WrapItem mr='0.8rem' >
+              <Avatar size='md' name='Christian Nwamba' src='https://bit.ly/sage-adebayo' />{' '}
+            </WrapItem>
           </Flex>
         </Flex>
       </Box>
