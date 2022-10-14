@@ -9,7 +9,7 @@ export function Header() {
 
   return (
     <>
-      <Box bgColor={theme.colors.purple_500} >
+      <Box bgColor={theme.colors.purple_500} w='100%' >
         <Flex h='5rem' alignItems={'center'} justifyContent={'space-between'} paddingX='4rem' >
           <Flex alignItems='center' >
             <Image boxSize='50px' src={logo} alt='Logo InstaJobs' />

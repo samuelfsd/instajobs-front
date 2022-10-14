@@ -1,14 +1,10 @@
-import { Box, useTheme } from '@chakra-ui/react';
-import { Header } from '~/components/Header';
+import { Flex } from '@chakra-ui/react';
+import Post from '~/components/Post';
 
-export default function HomePage() {
-  const theme = useTheme();
+export function HomePage() {
   return (
-    <>
-      <Box bgColor={theme.colors.primary}>
-        <Header />
-      </Box>
-      <h1 className='teste'>Bem vindo a página principal</h1>
-    </>
+    <Flex flexDirection='column' alignItems='center' >
+      <Post />
+    </Flex>
   );
 }
