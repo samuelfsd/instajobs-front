@@ -1,22 +1,9 @@
 import {
-  Flex,
-  Heading,
-  Input,
-  Button,
-  Stack,
-  Box,
-  FormControl,
-  useColorModeValue,
-  Text,
-  FormLabel,
-  Image,
-  Link,
+  Box, Button, Flex, FormControl, FormLabel, Heading, Image, Input, Link, Stack, Text, useColorModeValue
 } from '@chakra-ui/react';
-import { useContext, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { Navigate } from 'react-router-dom';
 import { ToggleColorMode } from '~/components/ToggleColorMode';
-import { AuthContext } from '~/context/authContext';
+import { useAuth } from '~/providers/Auth/useAuth';
 
 import logo from '../../assets/logo.svg';
 interface IForm {
@@ -26,18 +13,19 @@ interface IForm {
 
 export function LoginPage() {
   const { register, handleSubmit } = useForm<IForm>();
-  const { signIn, signed } = useContext(AuthContext);
+  const { signIn } = useAuth();
 
   const colorBackground = useColorModeValue('gray.100', 'gray.700');
   const colorText = useColorModeValue('gray.500', 'gray.200');
 
   const handleLogin: SubmitHandler<IForm> = async (data: IForm) => {
+    if (!data.email || !data.password) {
+      alert('Email ou senha inválidos');
+      return
+    }
+
     await signIn(data);
   };
-
-  if (signed) {
-    return <Navigate to='/home' />;
-  }
 
   return (
     <Flex minH={'100vh'} align={'center'} justify={'center'} bg={colorBackground}>

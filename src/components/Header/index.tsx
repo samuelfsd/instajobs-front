@@ -1,11 +1,14 @@
-import { Avatar, Box, Flex, Image, Text, useTheme, WrapItem } from '@chakra-ui/react';
+import { ArrowBackIcon } from '@chakra-ui/icons';
+import { Avatar, Box, Flex, IconButton, Image, Menu, MenuButton, MenuItem, MenuList, Text, useTheme } from '@chakra-ui/react';
+import { useContext } from 'react';
+import { AuthContext } from '~/providers/Auth/authContext';
 
 import logo from '../../assets/logo.svg';
 import { ToggleColorMode } from '../ToggleColorMode';
 
 export function Header() {
-
   const theme = useTheme();
+  const { signOut } = useContext(AuthContext);
 
   return (
     <>
@@ -18,9 +21,20 @@ export function Header() {
 
           <Flex alignItems='center' justifyContent='space-between' w='10rem' >
             <ToggleColorMode />
-            <WrapItem mr='0.8rem' >
-              <Avatar size='md' name='Christian Nwamba' src='https://bit.ly/sage-adebayo' />{' '}
-            </WrapItem>
+            <Menu>
+              <MenuButton
+                as={IconButton}
+                aria-label='Options'
+                background='none'
+                icon={<Avatar size='md' name='Christian Nwamba' src='https://bit.ly/sage-adebayo' />}
+              />
+              <MenuList>
+                <MenuItem icon={<ArrowBackIcon />} onClick={() => signOut()} >
+                  Sair
+                </MenuItem>
+              </MenuList>
+            </Menu>
+
           </Flex>
         </Flex>
       </Box>
