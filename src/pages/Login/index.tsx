@@ -16,6 +16,7 @@ export function LoginPage() {
   const { signIn } = useAuth();
 
   const colorBackground = useColorModeValue('gray.100', 'gray.700');
+  const colorBackgroundLogin = useColorModeValue('gray.50', 'gray.800');
   const colorText = useColorModeValue('gray.500', 'gray.200');
 
   const handleLogin: SubmitHandler<IForm> = async (data: IForm) => {
@@ -29,7 +30,7 @@ export function LoginPage() {
 
   return (
     <Flex minH={'100vh'} align={'center'} justify={'center'} bg={colorBackground}>
-      <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
+      <Stack spacing={8} mx={'auto'} maxW={'lg'} py={2} px={6}>
         <Stack align={'center'}>
           <Box>
             <Image boxSize='100px' src={logo} alt='Logo InstaJobs' />
@@ -39,7 +40,7 @@ export function LoginPage() {
             Poste ofertas ou fique por dentro das novidades de emprego no mercado!
           </Text>
         </Stack>
-        <Box rounded={'lg'} bg={colorBackground} boxShadow={'lg'} p={8}>
+        <Box rounded={'lg'} bg={colorBackgroundLogin} boxShadow={'lg'} p={8}>
           <Stack align='flex-end' spacing={5}>
             <Box>
               <ToggleColorMode />
@@ -57,9 +58,11 @@ export function LoginPage() {
               </FormControl>
               <Stack spacing={10}>
                 <Stack direction={{ base: 'column', sm: 'row' }} justify='flex-end'>
-                  <Link href='/register' color={'blue.400'} textDecoration='none'>
-                    Não está cadastrado? Faça seu cadastro!
-                  </Link>
+                  <Text>Ainda não é cadastrado?{' '}
+                    <Link href='/register' color={'blue.400'} textDecoration='none'>
+                      Faça seu cadastro!
+                    </Link>
+                  </Text>
                 </Stack>
                 <Button
                   type='submit'

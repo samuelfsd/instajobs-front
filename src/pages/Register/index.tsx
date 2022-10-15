@@ -1,4 +1,5 @@
 import {
+  Image,
   Flex,
   Box,
   FormControl,
@@ -12,8 +13,10 @@ import {
   Text,
   Link,
   useColorModeValue,
+  useTheme,
 } from '@chakra-ui/react';
 
+import logo from '~/assets/logo.svg';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
 import { useState } from 'react';
@@ -28,7 +31,8 @@ interface IFormValues {
 }
 
 export function RegisterPage() {
-  const colorBackground = useColorModeValue('gray.50', 'gray.700');
+  const colorBackground = useColorModeValue('gray.100', 'gray.700');
+  const colorBackgroundRegister = useColorModeValue('gray.50', 'gray.800');
   const colorText = useColorModeValue('gray.500', 'gray.200');
 
   const { register, handleSubmit } = useForm<IFormValues>();
@@ -45,24 +49,30 @@ export function RegisterPage() {
       email,
       password,
     };
-
+    
     const response = await api.post('/create', data);
 
     console.log(response.data);
   };
 
+  const theme = useTheme();
   return (
     <Flex minH={'100vh'} align={'center'} justify={'center'} bg={colorBackground}>
-      <Stack spacing={8} mx={'auto'} width={'550px'} py={12} px={6}>
-        <Stack align={'center'}>
-          <Heading fontSize={'4xl'} textAlign={'center'}>
-            Crie sua conta!
+      <Stack spacing={8} mx={'auto'} width={'1000px'} py={2} px={6} direction='row' align={'center'}>
+        <Stack align={'center'} width={'800px'}>
+          <Box>
+            <Image boxSize='150px' src={logo} alt='Logo InstaJobs' />
+          </Box>
+          
+          <Heading fontSize={'4xl'} textAlign={'center'} >
+            <Text fontSize='4xl' ml='1rem' fontWeight='700' color={theme.colors.purple_500} >InstaJobs</Text>
+            Crie a sua conta!
           </Heading>
           <Text fontSize={'lg'} color={colorText}>
-            aproveite as melhores ofertas!!!
+            e aproveite as melhores ofertas!!!
           </Text>
         </Stack>
-        <Box rounded={'lg'} bg={colorBackground} boxShadow={'lg'} p={8}>
+        <Box rounded={'lg'} bg={colorBackgroundRegister} boxShadow={'lg'} p={8} width={'650px'}>
           <Stack align='flex-end' spacing={5}>
             <Box>
               <ToggleColorMode />
@@ -124,7 +134,7 @@ export function RegisterPage() {
               <Stack pt={6}>
                 <Text align={'center'}>
                   Já é um usuário?{' '}
-                  <Link href='/login' color={'blue.400'}>
+                  <Link href='/' color={'blue.400'}>
                     Login
                   </Link>
                 </Text>
