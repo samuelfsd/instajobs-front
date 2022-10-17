@@ -31,10 +31,11 @@ interface IFormValues {
 }
 
 export function RegisterPage() {
+  const theme = useTheme();
   const colorBackground = useColorModeValue('gray.100', 'gray.700');
   const colorBackgroundRegister = useColorModeValue('gray.50', 'gray.800');
-  const colorText = useColorModeValue('gray.500', 'gray.200');
-
+  const colorText = useColorModeValue('gray.600', 'gray.200');
+  const colorTextTheme = useColorModeValue(theme.colors.purple_500,theme.colors.purple_100)
   const { register, handleSubmit } = useForm<IFormValues>();
 
   const [name, setName] = useState('');
@@ -55,24 +56,27 @@ export function RegisterPage() {
     console.log(response.data);
   };
 
-  const theme = useTheme();
+  
   return (
     <Flex minH={'100vh'} align={'center'} justify={'center'} bg={colorBackground}>
-      <Stack spacing={8} mx={'auto'} width={'1000px'} py={2} px={6} direction='row' align={'center'}>
-        <Stack align={'center'} width={'800px'}>
-          <Box>
-            <Image boxSize='150px' src={logo} alt='Logo InstaJobs' />
+      <Stack spacing={[8,4,8]} mx={'auto'} width={'1000px'} py={2} px={6} direction={['row','column','row']} align={'center'}>
+        <Stack align={'center'} width={['300px','300px','300px']} >
+          <Box ml='1rem'>
+            <Image boxSize={['100px','80px','100px']} src={logo} alt='Logo InstaJobs' />
           </Box>
-          
-          <Heading fontSize={'4xl'} textAlign={'center'} >
-            <Text fontSize='4xl' ml='1rem' fontWeight='700' color={theme.colors.purple_500} >InstaJobs</Text>
-            Crie a sua conta!
+          <Heading textAlign={'center'} width={['300px','500px']}>
+            <Text fontSize={['8xl','2xl','4xl']} ml='1rem' fontWeight='700' color={colorTextTheme}>
+              InstaJobs
+            </Text>
+            <Text fontSize={['2xl','2xl','2xl']} ml='1rem'>
+              Crie a sua conta!
+            </Text>
+            <Text fontSize={['lg','md','lg']} color={colorText} ml='1rem'>
+              e aproveite as melhores ofertas!!!
+            </Text>
           </Heading>
-          <Text fontSize={'lg'} color={colorText}>
-            e aproveite as melhores ofertas!!!
-          </Text>
         </Stack>
-        <Box rounded={'lg'} bg={colorBackgroundRegister} boxShadow={'lg'} p={8} width={'650px'}>
+        <Box rounded={'lg'} bg={colorBackgroundRegister} boxShadow={'lg'} p={8} width={['650px', '450px']}>
           <Stack align='flex-end' spacing={5}>
             <Box>
               <ToggleColorMode />
