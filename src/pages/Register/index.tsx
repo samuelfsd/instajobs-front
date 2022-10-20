@@ -34,7 +34,7 @@ export function RegisterPage() {
   const theme = useTheme();
   const colorBackground = useColorModeValue('gray.100', 'gray.700');
   const colorBackgroundRegister = useColorModeValue('gray.50', 'gray.800');
-  const colorText = useColorModeValue('gray.600', 'gray.200');
+  const colorText = useColorModeValue('gray.500', 'gray.200');
   const colorTextTheme = useColorModeValue(theme.colors.purple_500,theme.colors.purple_100)
   const { register, handleSubmit } = useForm<IFormValues>();
 
@@ -59,20 +59,20 @@ export function RegisterPage() {
   
   return (
     <Flex minH={'100vh'} align={'center'} justify={'center'} bg={colorBackground}>
-      <Stack spacing={[8,4,8]} mx={'auto'} width={'1000px'} py={2} px={6} direction={['row','column','row']} align={'center'}>
-        <Stack align={'center'} width={['300px','300px','300px']} >
-          <Box ml='1rem'>
-            <Image boxSize={['100px','80px','100px']} src={logo} alt='Logo InstaJobs' />
+      <Stack justifyContent={'space-between'} spacing={[8,4,8]} mx={'auto'} width={'1000px'} py={2} px={6} direction={['row','column','row']} align={'center'}>
+        <Stack align={['initial','center','initial']} width={'300px'}>
+          <Box ml={['4rem','1rem','4rem']}>
+            <Image boxSize={['150px','100px','150px']} src={logo} alt='Logo InstaJobs' />
           </Box>
-          <Heading textAlign={'center'} width={['300px','500px']}>
-            <Text fontSize={['8xl','2xl','4xl']} ml='1rem' fontWeight='700' color={colorTextTheme}>
+          <Heading textAlign={['initial','center','initial']}  width={['300px','500px']}>
+            <Text fontSize={['8xl','3xl','6xl']} ml='1rem' fontWeight='700' color={colorTextTheme}>
               InstaJobs
             </Text>
-            <Text fontSize={['2xl','2xl','2xl']} ml='1rem'>
+            <Text fontSize={['4xl','2xl','4xl']} ml='1rem'>
               Crie a sua conta!
             </Text>
             <Text fontSize={['lg','md','lg']} color={colorText} ml='1rem'>
-              e aproveite as melhores ofertas!!!
+              e aproveite as melhores ofertas de emprego do mercado!!!
             </Text>
           </Heading>
         </Stack>
