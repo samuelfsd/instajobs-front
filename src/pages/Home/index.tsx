@@ -3,8 +3,10 @@ import Post from '~/components/Post';
 
 export function HomePage() {
   return (
-    <Flex flexDirection='column' alignItems='center' >
-      <Post />
-    </Flex>
+    <>
+      <Flex flexDirection='column' alignItems='center' >
+        <Post />
+      </Flex>
+    </>
   );
 }

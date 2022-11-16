@@ -1,4 +1,4 @@
-import { createContext, useCallback, useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import { IAuthContext, IProps, IUserProps } from './types';
 
 import { useToast } from '@chakra-ui/react';
