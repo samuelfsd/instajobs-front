@@ -14,9 +14,13 @@ export function Header() {
 
   const theme = useTheme();
 
+  function handleCreateNewPost() {
+    console.log('Vamos ver ')
+  }
+
   return (
     <>
-      <Modal isOpen={isOpen} onClose={onClose} />
+      <Modal isOpen={isOpen} onClose={onClose} modalTitle='Adiciona novo Job' saveButtonCallback={handleCreateNewPost} />
       <Box bgColor={theme.colors.purple_500} w='100%' >
         <Flex h='5rem' alignItems={'center'} justifyContent={'space-between'} paddingX='4rem' >
           <Flex alignItems='center' >
