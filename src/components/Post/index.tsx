@@ -10,7 +10,7 @@ import {
 	Menu,
 	MenuButton,
 	MenuItem,
-	MenuList, Text, WrapItem
+	MenuList, Text, theme, useColorModeValue, useTheme, WrapItem
 } from '@chakra-ui/react';
 
 import { BsFillPersonCheckFill } from 'react-icons/bs';
@@ -19,8 +19,14 @@ import { IoMdMore } from 'react-icons/io'
 
 
 export default function Post() {
+	const theme = useTheme();
+	const colorBackground = useColorModeValue('gray.100', 'gray.700');
+	const colorText = useColorModeValue('#000000', '#ffffff');
+	const colorTextDestaque = useColorModeValue(theme.colors.purple_500, '#B1B2FF');
+	
+	
 	return (
-		<Flex flexDirection='column' alignItems='space-between' bgColor='#EEF1FF' width='40rem' height='22rem' padding='1rem' mt='1rem'  >
+		<Flex color={colorText} flexDirection='column' alignItems='space-between' bgColor={colorBackground} width='40rem' height='22rem' padding='1rem' mt='1rem'  >
 			<Flex justifyContent='space-between' alignItems='center' height='2rem'>
 				<Flex alignItems='center' >
 					<WrapItem mr='0.8rem' >
@@ -46,7 +52,7 @@ export default function Post() {
 				</Menu>
 			</Flex>
 
-			<Flex justifyContent='space-between' fontSize='1rem' fontWeight='700' my='1rem' >
+			<Flex color={colorTextDestaque} justifyContent='space-between' fontSize='1rem' fontWeight='700' my='1rem' >
 				<List spacing={3} width='65%' >
 					<ListItem>
 						<ListIcon as={IoCheckmarkCircleSharp} />
@@ -81,7 +87,7 @@ export default function Post() {
 			</Flex>
 
 			<Flex alignItems='center' justifyContent='flex-end' mt='1rem'  >
-				<Button rightIcon={<BsFillPersonCheckFill />} backgroundColor='#17E1B1' color='white' variant='solid' width='12rem' >
+				<Button rightIcon={<BsFillPersonCheckFill />} backgroundColor={theme.colors.green_500} color='white' variant='solid' width='12rem' >
 					Enviar Candidatura
 				</Button>
 			</Flex>
